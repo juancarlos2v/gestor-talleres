@@ -1,0 +1,2 @@
+class CupoLlenoError(Exception):
+    pass
