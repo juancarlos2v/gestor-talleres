@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block title %}Talleres{% endblock %}
+{% block content %}
+<div class="contenedor">
+    <div class="title-button">
+        <h2>Talleres</h2>
+        <a id="btn-nuevo-taller" class="btn btn-alta" href="#modal-taller">+ Nuevo Taller</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Modalidad</th>
+                <th>Cupo</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in talleres %}
+            <tr>
+                <td>{{ t.nombre }}</td>
+                <td>{{ t.modalidad }}</td>
+                <td>{{ t.cupo }}</td>
+                <td>{{ t.fecha }}</td>
+                <td>
+                    <a href="#modal-taller" class="btn-editar" data-id="{{ t.id }}" data-nombre="{{ t.nombre }}"
+                        data-modalidad="{{ t.modalidad }}" data-cupo="{{ t.cupo }}" data-fecha="{{ t.fecha }}">
+                        ✏️
+                    </a>
+                    <form action="{{ url_for('talleres.eliminar_taller', id=t.id) }}" method="POST"
+                        style="display:inline">
+                        <button type="submit" class="btn-eliminar">🗑️</button>
+                    </form>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <!-- ===================== MODALES ===================== -->
+    <section class="modal" id="modal-taller">
+        <div class="dialog">
+            <header>
+                <h3 id="modal-titulo">Nuevo Taller</h3>
+            </header>
+            <div class="content">
+                <form id="formTaller" action="{{ url_for('talleres.crear_taller') }}" method="POST">
+                    <div class="form-grid">
+                        <label>Nombre <input name="nombre" type="text" placeholder="Ana"></label>
+                        <label>Modalidad <input name="modalidad" type="text" placeholder="30111222"></label>
+                        <label>Cupos <input name="cupo" type="number"></label>
+                        <label>Fecha <input name="fecha" type="date"></label>
+                        <label>Hora <input name="hora" type="time"></label>
+                    </div>
+                    <footer>
+                        <a class="btn btn-volver" href="#">Cerrar</a>
+                        <button type="submit" class="btn btn-alta">Guardar</a>
+                    </footer>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const modal = document.querySelector('#modal-taller');
+        const form = document.querySelector('#formTaller');
+        const titulo = document.querySelector('#modal-titulo');
+        const btnNuevo = document.querySelector('#btn-nuevo-taller');
+
+        //NUEVO TALLER
+        btnNuevo.addEventListener('click', e => {
+            e.preventDefault();
+            titulo.textContent = "Nuevo Taller";
+            form.action = "{{ url_for('talleres.crear_taller') }}";
+            form.reset(); // limpia los campos
+            modal.style.display = 'block';
+        });
+
+        //EDITAR TALLER
+        document.querySelectorAll('.btn-editar').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                titulo.textContent = "Editar Taller";
+                form.nombre.value = btn.dataset.nombre;
+                form.modalidad.value = btn.dataset.modalidad;
+                form.cupo.value = btn.dataset.cupo;
+                //form.fecha.value = btn.dataset.fecha;
+                form.action = `/talleres/editar/${btn.dataset.id}`;
+                modal.style.display = 'block';
+            });
+        });
+
+        //CERRAR MODAL
+        document.querySelectorAll('.btn-volver').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                modal.style.display = 'none';
+            });
+        });
+    </script>
+
+
+
+
+</div>
+{% endblock %}

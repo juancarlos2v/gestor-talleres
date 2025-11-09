@@ -1,0 +1,17 @@
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: var(--bg-dark);
+    padding: 1rem 10rem;
+}
+
+.enlaces a {
+    color: white;
+    margin-right: 3rem;
+    font-size: 20px;
+}
+
+.enlaces a:hover {
+    border-bottom: solid 4px white;
+}

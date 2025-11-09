@@ -18,7 +18,7 @@ class Taller(db.Model):
         self.fecha=fecha
     
     def validar(self):
-        isValid=self.dni and self.nombre and self.apellido
+        isValid=self.nombre and self.modalidad and self.cupo
 
         if not isValid:
             raise DatosInvalidosError("Todos los campos son obligatorios.")

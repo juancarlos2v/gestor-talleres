@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --bg-dark: #002733;
+    --primary: #336ACC;
+    --muted: #D1D8E0;
+    --white: #FFFFFF;
+    --light: #F3F6F9
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+a {
+    font-style: none;
+    text-decoration: none;
+    color: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: auto;
+}
+
+table {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+table th {
+    text-align: start;
+    background-color: rgb(194, 194, 194);
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+tr:hover {
+    background-color: var(--light);
+}
+
+.contenedor {
+    padding: 5rem 10rem;
+}
+
+.title-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.btn {
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.btn-alta {
+    background-color: var(--primary) !important;
+
+}
+
+.btn-volver {
+    background-color: var(--muted);
+}
+
+/* ===== MODALES (via :target) ===== */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, .35);
+    padding: 24px;
+}
+
+.modal:target {
+    display: flex
+}
+
+/* cuando la URL tiene #id del modal, se muestra */
+
+.modal .dialog {
+    background: #ffffff;
+    width: 100%;
+    max-width: 560px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.dialog header,
+.dialog footer {
+    padding: 16px 18px;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border)
+}
+
+.dialog header h3 {
+    margin: 0;
+    font-size: 18px
+}
+
+.dialog .content {
+    padding: 18px
+}
+
+/* Formularios dentro de modales */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    color: #0f172a
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--input);
+    color: var(--text)
+}
+
+.dialog footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px
+}

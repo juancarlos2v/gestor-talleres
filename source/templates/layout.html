@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gestor de Talleres{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>
