@@ -113,6 +113,9 @@ url_for('talleres.listar_talleres') usa el formato blueprint_name.funcion, lo qu
 - Se usa method="POST" para crear y editar, porque los formularios HTML no soportan PUT ni DELETE nativos.
 
 
+## Diagrama
+![diagram](./source/static/img/diagram.png)
+
 
 ### Abrí en el navegador:
 👉 http://127.0.0.1:5000
