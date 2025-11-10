@@ -3,8 +3,9 @@
 {% block content %}
 <div class="contenedor">
     <div class="title-button">
-        <h2>Inscripciones</h2>
+        <p>Inscripciones</p>
         <a id="btn-nuevo-alumno" class="btn btn-alta" href="#modal-inscripcion">+ Nueva Inscripcion</a>
+
     </div>
 
     <table>
@@ -25,7 +26,7 @@
                 <td>{{ inscripcion.taller_nombre }}</td>
                 <td>{{ inscripcion.modalidad }}</td>
                 <td>
-                    🗑️
+                    {% include 'svg_delete.html' %}
                 </td>
             </tr>
             {% endfor %}

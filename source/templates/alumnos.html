@@ -3,7 +3,7 @@
 {% block content %}
 <div class="contenedor">
     <div class="title-button">
-        <h2>Alumnos</h2>
+        <p>Alumnos</p>
         <a id="btn-nuevo-alumno" class="btn btn-alta" href="#modal-alumno">+ Nuevo Alumno</a>
     </div>
 
@@ -25,7 +25,7 @@
                 <td>
                     <a href="#modal-alumno" class="btn-editar" data-dni="{{ alumno.dni }}"
                         data-nombre="{{ alumno.nombre }}" data-apellido="{{ alumno.apellido }}">
-                        ✏️
+                        {% include 'svg_edit.html' %}
                     </a>
 
 

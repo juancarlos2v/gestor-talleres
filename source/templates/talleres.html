@@ -3,7 +3,7 @@
 {% block content %}
 <div class="contenedor">
     <div class="title-button">
-        <h2>Talleres</h2>
+        <p>Talleres</p>
         <a id="btn-nuevo-taller" class="btn btn-alta" href="#modal-taller">+ Nuevo Taller</a>
     </div>
 
@@ -27,11 +27,13 @@
                 <td>
                     <a href="#modal-taller" class="btn-editar" data-id="{{ t.id }}" data-nombre="{{ t.nombre }}"
                         data-modalidad="{{ t.modalidad }}" data-cupo="{{ t.cupo }}" data-fecha="{{ t.fecha }}">
-                        ✏️
+                        {% include 'svg_edit.html' %}
                     </a>
                     <form action="{{ url_for('talleres.eliminar_taller', id=t.id) }}" method="POST"
                         style="display:inline">
-                        <button type="submit" class="btn-eliminar">🗑️</button>
+                        <button type="submit" class="btn-eliminar">
+                            {% include 'svg_delete.html' %}
+                        </button>
                     </form>
 
                 </td>
@@ -50,11 +52,10 @@
             <div class="content">
                 <form id="formTaller" action="{{ url_for('talleres.crear_taller') }}" method="POST">
                     <div class="form-grid">
-                        <label>Nombre <input name="nombre" type="text" placeholder="Ana"></label>
-                        <label>Modalidad <input name="modalidad" type="text" placeholder="30111222"></label>
+                        <label>Nombre <input name="nombre" type="text" placeholder=""></label>
+                        <label>Modalidad <input name="modalidad" type="text" placeholder=""></label>
                         <label>Cupos <input name="cupo" type="number"></label>
-                        <label>Fecha <input name="fecha" type="date"></label>
-                        <label>Hora <input name="hora" type="time"></label>
+                        <label>Fecha <input name="fecha" type="datetime-local"></label>
                     </div>
                     <footer>
                         <a class="btn btn-volver" href="#">Cerrar</a>
@@ -78,7 +79,7 @@
             titulo.textContent = "Nuevo Taller";
             form.action = "{{ url_for('talleres.crear_taller') }}";
             form.reset(); // limpia los campos
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         });
 
         //EDITAR TALLER
@@ -91,7 +92,7 @@
                 form.cupo.value = btn.dataset.cupo;
                 //form.fecha.value = btn.dataset.fecha;
                 form.action = `/talleres/editar/${btn.dataset.id}`;
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
             });
         });
 

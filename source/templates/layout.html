@@ -3,10 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Gestor de Talleres{% endblock %}</title>
+    <title>{% block title %}Gestión de Talleres y Cursos{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit_square" />
 </head>
 
 <body>
@@ -14,6 +17,7 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+    {% include 'footer.html' %}
 </body>
 
 </html>

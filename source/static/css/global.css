@@ -5,8 +5,18 @@
     --primary: #336ACC;
     --muted: #D1D8E0;
     --white: #FFFFFF;
-    --light: #F3F6F9
+    --light: #F3F6F9;
+    --tertiary: #005E7A
 }
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
 
 body {
     font-family: 'Nunito', sans-serif;
@@ -26,18 +36,23 @@ button {
 }
 
 table {
-    margin-top: 2rem;
+    margin-top: .5rem;
     width: 100%;
+    background-color: var(--white);
+    border: none;
 }
 
 table th {
     text-align: start;
-    background-color: rgb(194, 194, 194);
+    background-color: var(--muted);
+    font-size: 17px;
+    font-weight: 800;
 }
+
 
 th,
 td {
-    padding: 10px;
+    padding: 15px;
 }
 
 tr:hover {
@@ -45,13 +60,20 @@ tr:hover {
 }
 
 .contenedor {
-    padding: 5rem 10rem;
+    padding: 2rem 10rem;
+    background-color: var(--light);
 }
 
 .title-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+}
+
+.title-button>p {
+    font-size: 30px;
+    font-weight: 500;
 }
 
 
@@ -62,8 +84,12 @@ tr:hover {
 }
 
 .btn-alta {
-    background-color: var(--primary) !important;
+    background-color: var(--primary);
 
+}
+
+.btn-alta:hover {
+    background-color: var(--tertiary) !important;
 }
 
 .btn-volver {
@@ -85,10 +111,17 @@ tr:hover {
     display: flex
 }
 
+#modal-titulo {
+    font-size: 25px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px var(--bg-dark);
+}
+
 /* cuando la URL tiene #id del modal, se muestra */
 
 .modal .dialog {
     background: #ffffff;
+    padding: 1rem;
     width: 100%;
     max-width: 560px;
     border-radius: 16px;
@@ -125,8 +158,9 @@ tr:hover {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-size: 14px;
-    color: #0f172a
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bg-dark)
 }
 
 input[type="text"],
@@ -135,7 +169,7 @@ input[type="datetime-local"],
 select {
     padding: 10px 12px;
     border-radius: 10px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--muted);
     background: var(--input);
     color: var(--text)
 }
