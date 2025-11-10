@@ -36,7 +36,7 @@ class InscripcionRepository:
             if not taller or taller.cupo <= 0:
                 raise ValueError("No hay cupos disponibles")
 
-            # Crear inscripción
+            # Crear inscripcion
             query_insert = text("""
                 INSERT INTO inscripciones(id_taller, id_alumno)
                 VALUES (:id_taller, :id_alumno)

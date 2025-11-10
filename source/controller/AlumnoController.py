@@ -24,5 +24,4 @@ def crear_alumno():
         return redirect(url_for('alumnos.alumnos_list'))
     except DatosInvalidosError as e:
         flash(str(e), 'error')
-        # 👇 redirigimos con ancla al modal
         return redirect(url_for('alumnos.alumnos_list') + '#modal-alumno')
