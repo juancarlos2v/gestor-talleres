@@ -17,7 +17,7 @@ class InscripcionRepository:
 
     def obtener_talleres(self):
         with sqlite_engine.connect() as con:
-            query = text("SELECT id, nombre FROM talleres")
+            query = text("SELECT id, nombre,fecha,modalidad FROM talleres")
             result = con.execute(query)
             return result.fetchall()
 

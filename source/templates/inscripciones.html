@@ -44,14 +44,15 @@
                 <form id="formInscripcion" action="{{ url_for('inscripciones.crear_inscripcion') }}" method="POST">
                     <div class="form-grid">
                         <label>DNI de Alumno
-                            <input name="dni" type="text" placeholder="9999999" required>
+                            <input name="dni" type="text" placeholder="" required>
                         </label>
 
                         <label>Taller
                             <select name="id_taller" required>
                                 <option value="" disabled selected>Selecciona un taller</option>
                                 {% for taller in talleres %}
-                                <option value="{{ taller.id }}">{{ taller.nombre }}</option>
+                                <option value="{{ taller.id }}">{{ taller.nombre }} - {{taller.fecha}}
+                                    [{{taller.modalidad}}] </option>
                                 {% endfor %}
                             </select>
                         </label>

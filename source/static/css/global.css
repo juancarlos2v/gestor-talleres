@@ -6,7 +6,9 @@
     --muted: #D1D8E0;
     --white: #FFFFFF;
     --light: #F3F6F9;
-    --tertiary: #005E7A
+    --tertiary: #005E7A;
+    --danger: #CC3333;
+    --success: #26874A;
 }
 
 .material-symbols-outlined {
@@ -178,4 +180,14 @@ select {
     display: flex;
     justify-content: flex-end;
     gap: 8px
+}
+
+.alert-error {
+    color: var(--danger);
+    margin-top: 1rem;
+}
+
+.alert-success {
+    color: var(--success);
+    margin-top: 1rem;
 }

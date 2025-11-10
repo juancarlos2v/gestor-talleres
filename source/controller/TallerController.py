@@ -16,8 +16,8 @@ def crear_taller():
     nombre= request.form["nombre"]
     modalidad=request.form["modalidad"]
     cupo=request.form["cupo"]
-    
-    service.crear_taller(nombre,modalidad,cupo,"2025-11-10 11:20:00")
+    fecha = request.form['fecha']
+    service.crear_taller(nombre,modalidad,cupo,fecha)
     return redirect(url_for("talleres.listar_talleres"))
 
 @taller_bp.route('/editar/<int:id>', methods=['POST'])
@@ -25,7 +25,7 @@ def editar_taller(id):
     nombre = request.form['nombre']
     modalidad = request.form['modalidad']
     cupo = request.form['cupo']
-    fecha = "2025-11-10 11:20:00"
+    fecha = request.form['fecha']
     service.editar_taller(id, nombre, modalidad, cupo, fecha)
     return redirect(url_for('talleres.listar_talleres'))
 
