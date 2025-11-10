@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block title %}Talleres{% endblock %}
+{% block content %}
+<div class="contenedor">
+    <div class="title-button">
+        <h2>Inscripciones</h2>
+        <a id="btn-nuevo-alumno" class="btn btn-alta" href="#modal-inscripcion">+ Nueva Inscripcion</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                <th> </th>
+                <th>Taller</th>
+                <th>Modalidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inscripcion in inscripciones %}
+            <tr>
+                <td>{{ inscripcion.alumno_nombre }}</td>
+                <td>{{ inscripcion.alumno_apellido }}</td>
+                <td>{{ inscripcion.taller_nombre }}</td>
+                <td>{{ inscripcion.modalidad }}</td>
+                <td>
+                    🗑️
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <!-- ===================== MODALES ===================== -->
+    <section class="modal" id="modal-inscripcion">
+        <div class="dialog">
+            <header>
+                <h3 id="modal-titulo">Nuevo Inscripcion</h3>
+            </header>
+            <div class="content">
+                <form id="formAlumno" action="{{ url_for('inscripciones.crear_inscripcion') }}" method="POST">
+                    <div class="form-grid">
+                        <label>DNI <input name="dni" type="text" placeholder="Ana"></label>
+                        <label>Nombre <input name="nombre" type="text" placeholder="30111222"></label>
+                        <label>Apellido <input name="apellido" type="text"></label>
+                    </div>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'error' %}
+                    <div class="alert-error">{{ message }}</div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <footer>
+                        <a class="btn btn-volver" href="#">Cerrar</a>
+                        <button type="submit" class="btn btn-alta">Guardar</a>
+                    </footer>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>
+{% endblock %}

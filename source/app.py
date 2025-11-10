@@ -2,6 +2,7 @@ from flask import  Flask
 from config.database import db
 from controller.TallerController import taller_bp
 from controller.AlumnoController import alumno_bp
+from controller.InscripcionesController import inscripcion_bp
 
 def create_app():
     app=Flask(__name__)
@@ -11,6 +12,7 @@ def create_app():
 
     app.register_blueprint(taller_bp)
     app.register_blueprint(alumno_bp)
+    app.register_blueprint(inscripcion_bp)
 
     return app
 

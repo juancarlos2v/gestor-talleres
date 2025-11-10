@@ -1,4 +1,3 @@
-from exceptions import DatosInvalidosError
 from app import db
 
 class Alumno(db.Model) :
