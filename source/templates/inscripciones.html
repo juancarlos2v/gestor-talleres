@@ -40,11 +40,20 @@
                 <h3 id="modal-titulo">Nuevo Inscripcion</h3>
             </header>
             <div class="content">
-                <form id="formAlumno" action="{{ url_for('inscripciones.crear_inscripcion') }}" method="POST">
+                <form id="formInscripcion" action="{{ url_for('inscripciones.crear_inscripcion') }}" method="POST">
                     <div class="form-grid">
-                        <label>DNI <input name="dni" type="text" placeholder="Ana"></label>
-                        <label>Nombre <input name="nombre" type="text" placeholder="30111222"></label>
-                        <label>Apellido <input name="apellido" type="text"></label>
+                        <label>DNI de Alumno
+                            <input name="dni" type="text" placeholder="9999999" required>
+                        </label>
+
+                        <label>Taller
+                            <select name="id_taller" required>
+                                <option value="" disabled selected>Selecciona un taller</option>
+                                {% for taller in talleres %}
+                                <option value="{{ taller.id }}">{{ taller.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
                     </div>
 
                     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -52,6 +61,8 @@
                     {% for category, message in messages %}
                     {% if category == 'error' %}
                     <div class="alert-error">{{ message }}</div>
+                    {% elif category == 'success' %}
+                    <div class="alert-success">{{ message }}</div>
                     {% endif %}
                     {% endfor %}
                     {% endif %}
@@ -59,7 +70,7 @@
 
                     <footer>
                         <a class="btn btn-volver" href="#">Cerrar</a>
-                        <button type="submit" class="btn btn-alta">Guardar</a>
+                        <button type="submit" class="btn btn-alta">Guardar</button>
                     </footer>
                 </form>
             </div>
