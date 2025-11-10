@@ -1,0 +1,2 @@
+class DniDuplicadoError(Exception):
+    pass
